@@ -4,7 +4,7 @@ const API_KEY = '26b45fbf1e9ab80b49560d8d31c805bb';
 // ---------- CONFIG ----------
 const MAX_RECENTS = 6; // max number of recent cities to keep
 
-// ---------- DOM ELEMENTS (these IDs must exist in your HTML) ----------
+// ---------- DOM ELEMENTS ----------
 const searchInput = document.getElementById('city-input');
 const searchBtn = document.getElementById('city-search-btn');
 const currentLocBtn = document.getElementById('current-location-btn');
