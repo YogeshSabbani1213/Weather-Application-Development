@@ -28,11 +28,11 @@ function showMessage(text, type = 'info') {
     }, 4000);
 }
 
-function safeJSON(res){
-    return res.json().catch(()=>{
+function safeJSON(res) {
+    return res.json().catch(() => {
         throw new error('Invalid response from server.');
     })
-} 
+}
 
 function kelvinToC(k) { return +(k - 273.15).toFixed(1); }
 function kelvinToF(k) { return +((k - 273.15) * 9 / 5 + 32).toFixed(1); }
@@ -96,7 +96,7 @@ async function fetchWeatherByCity(city) {
         const cwResp = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${encodeURIComponent(city)}&appid=${API_KEY}`);
         if (!cwResp.ok) {
             if (cwResp.status === 404) throw new Error('City not found.');
-            if(cwResp.status === 401) throw new Error('Invalid API key.')
+            if (cwResp.status === 401) throw new Error('Invalid API key.')
             throw new Error('Error fetching current weather.');
         }
         const cwData = await safeJSON(cwResp);
@@ -264,8 +264,8 @@ function displayForecast(fcData) {
     daily.forEach(d => {
         const card = document.createElement('div');
         card.className =
-        'shadow-md shadow-black w-full sm:w-1/2 lg:w-1/3 p-4 border-2 border-slate-200  rounded-xl bg-white/10 text-center text-white';
-        
+            'shadow-md shadow-black w-full sm:w-1/2 lg:w-1/3 p-4 border-2 border-slate-200  rounded-xl bg-white/10 text-center text-white';
+
         card.innerHTML = `
         
         <div class=" shadow-sm shadow-black p-4 m-2 border-2 border-gray-800  border-solid">
@@ -308,8 +308,8 @@ currentLocBtn.addEventListener('click', () => {
         },
         (err) => {
             const msg = err.code === 1
-              ? 'Location permission denied.'
-              : 'unable to fetch location.';
+                ? 'Location permission denied.'
+                : 'unable to fetch location.';
             showMessage(msg, 'error');
         },
         { enableHighAccuracy: true, timeout: 10000 }
